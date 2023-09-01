@@ -1,0 +1,5 @@
+INDEX VERSION 1.131+C:\Users\windows10\Documents\Unifacisa\JoséAnderson\Banco de dados cs\.metadata\.plugins\org.eclipse.jdt.core
+1865797976.index
+982774913.index
+1619461220.index
+1540453551.index
