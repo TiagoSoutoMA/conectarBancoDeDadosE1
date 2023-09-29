@@ -1,0 +1,64 @@
+1. Crie uma base de dados chamada Empresa;
+	R: use Empresa
+
+2. Adicione uma coleção chamada Pessoa;
+	R: db.createCollection("Pessoa")
+
+3. Atribua a cada Documento em Pessoa os seguintes atributos: nome, idade, cargo, cidade.
+	R:
+	db.Pessoa.insertMany([
+  		{nome: "Tiago",		idade: 22, cargo: "Dev", 	cidade: "Campina Grande"},
+  		{nome: "Adelmo", 	idade: 24, cargo: "QA", 	cidade: "Grande Campina"},
+  		{nome: "Rodrigo", 	idade: 28, cargo: "Scrum M", 	cidade: "Lagoa Seca"},
+  		{nome: "Felype", 	idade: 60, cargo: "Agiota", 	cidade: "Ramadinha"},
+  		{nome: "Anderson", 	idade: 20, cargo: "Professor", 	cidade: "Alphaville"},
+  		{nome: "Duck", 		idade: 06, cargo: "Pastor", 	cidade: "Campina Grande"},
+  		{nome: "Eduardo", 	idade: 22, cargo: "Psicologo", 	cidade: "Lagoa Seca"},
+  		{nome: "Fernanda", 	idade: 27, cargo: "Odontologa", cidade: "Campina Grande"},
+  		{nome: "Claudia", 	idade: 52, cargo: "Professora", cidade: "Campina Grande"},
+  		{nome: "Hidemburgo", 	idade: 60, cargo: "Professor",	cidade: "Campina Grande"}
+	])
+
+4. Atualize os dados de duas pessoas, em que faça a complementação do nome e endereço.
+	R: db.Pessoa.updateMany([{nome: "Tiago"}, {$set: {nome: "Tiago Souto"}}, {nome: "Adelmo"}, {$set: {nome:"Adelmo Gama"}}])
+	   db.Pessoa.updateMany([{cidade: "Alphaville"}, {$set: {cidade:"APH"}}, {cidade: "Lagoa Seca"}, {$set: {cidade:"LS"}}])
+
+5. Filtre apenas as pessoas com idade maior que 25 anos, sem apareça o id.
+	R: db.Pessoa.find({idade:{$gte:25}}, {_id:0})
+
+6. Faça a agregação para calcular a média de idade das pessoas por cidade.
+	R: db.Pessoa.aggregate([
+	{
+	$group: {
+		_id: "$cidade",
+		media_idade: {
+			$avg: "$idade"
+		}
+	}
+	}])
+
+7. Crie uma nova coleção dos setores de trabalho, em cada setor deverá constar: sigla, descrição e salário
+	R: db.createCollection("Setores")
+	   db.Setores.insertMany([
+			{sigla:"RH", descricao:"Recursos Humanos", salario:2000},
+                      	{sigla:"DevBack", descricao:"Desenvolvedor BackEnd", salario:5000},
+                      	{sigla:"DevFront", descricao:"Desenvolvedor FrontEnd", salario:5000},
+                      	{sigla:"QA", descricao:"Qualidade de Software", salario:800}
+	   ])
+
+8. Qual o setor de trabalho com maior salário?
+	R: db.Setores.find().sort({salario: -1}).limit(1)
+
+9. Qual o setor de trabalho com menor salário?
+	R: db.Setores.find().sort({salario: 1}).limit(1)
+
+10. Qual a média dos salários dos setores de trabalho?
+	R: db.Setores.aggregate([
+	{
+	$group: {
+		_id: "$sigla",
+		media_salarial: {
+			$avg: "$salario"
+		}
+	}
+	}])

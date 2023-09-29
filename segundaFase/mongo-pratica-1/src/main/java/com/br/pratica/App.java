@@ -25,8 +25,8 @@ public class App {
 
         MongoCollection<Produto> collection = database.getCollection("Produto", Produto.class);
 
-        collection.insertOne(new Produto(1, "Feijão", 24.4));
-        collection.updateOne(new Document("_id", 1), set("descricao", "Feijão preto"));
-        collection.deleteOne(new Document("descricao", "Feijão preto"));
+//        collection.insertOne(new Produto(2, "Feijão", 24.4));
+//        collection.updateOne(new Document("_id", 1), set("descricao", "Feijão preto"));
+//        collection.deleteOne(new Document("descricao", "Feijão Preto"));
     }
 }

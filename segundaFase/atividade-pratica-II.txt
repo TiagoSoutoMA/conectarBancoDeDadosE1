@@ -1,0 +1,70 @@
+1. Crie uma base de dados chamada exemploII
+	R: use exemploII
+
+2. Adicione uma coleção chamada Aluno;
+	R: db.createCollection("Aluno")
+
+3. Adicionando um aluno.
+	R:
+	db.Pessoa.insertMany({nome: "Gabriel",		matricula: 123456, curso: "Sistemas"})
+
+4. Adicionando outro aluno.
+	R:
+	db.Pessoa.insertMany({nome: "Ana",		matricula: 654321, curso: "Jogos", disciplinas: ["Desenho 3D", "Java"], endereco: {rua: "Av. Dr. Fulano", num: 20}})
+
+5. Adicionando mais de um aluno por vez.
+	R:
+	db.Pessoa.insertMany([
+		{nome: "Beatriz",		matricula: 147258, curso: "Sistemas", disciplinas: ["BDOO", "Backend"]},
+		{nome: "João",		matricula: 258369, curso: "Sistemas"}
+	])
+
+
+6. Buscando todos os alunos.
+	R: db.Pessoa.find()
+
+7. Buscando objeto por um atributo.
+	R: db.Pessoa.find({nome: "Ana"})
+
+8. Buscando atributo de um objeto.
+	R: db.Pessoa.find({nome: "Ana"}, {disciplina:1})
+
+9. Buscando objeto sem mostrar um atributo.
+	R: db.Pessoa.find({nome: "Ana"}, {disciplina:0})
+
+10. Filtro de busca
+	R: db.Aluno.find({matricula:{$gte:200001}})
+	   db.Aluno.find({idade:{$gte:20}})
+	   db.Aluno.find({$and:[{matricula:{$gte:200000}}, {curso: “Sistemas”}]})
+
+11. Atualizando objeto.
+	R: db.Pessoa.updateOne({nome: "Ana"}, {$set:{nome:"Ana Carla"}})
+
+12. Removendo atributo de um objeto.
+	R: db.Pessoa.updateOne({nome: "Ana Carla"}, {$unset:{endereco:""}})
+
+13. Deletando objeto.
+	R: db.Pessoa.deleteOne({nome: "João"})
+	
+14. Agregação.
+	R: db.createCollection("Itens")
+	   db.Pessoa.insertMany([
+		{"_id": 1, "produto": "A", "quantidade": 5, "preco_unitario": 10},
+		{"_id": 2, "produto": "B", "quantidade": 3, "preco_unitario": 15},
+		{"_id": 3, "produto": "A", "quantidade": 2, "preco_unitario": 10},
+		{"_id": 4, "produto": "C", "quantidade": 7, "preco_unitario": 8}
+		
+	])
+	
+	db.Itens.aggregate([
+		{
+		$group: {
+			_id: "$produto",
+			receita_total: {
+					$sum: {
+						$multiply: ["$quantidade", "$preco_unitario"]
+					      }
+					}
+			}
+		}
+	])

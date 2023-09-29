@@ -1,0 +1,94 @@
+1. O que você entende por Persistência de Dados?
+ R.: Manipular o dado fora do momento de execução 
+
+2. Quais as diferenças entre objetos transientes e objetos persistentes? Explique.
+ R.: Transientes: Só existe durante a execução do programa
+     Persistentes: Existem até quando a aplicação finaliza a execução 
+
+3. Qual a principal diferença entre Banco de Dados Relacional e Banco de Dados
+Orientada a Objetos?
+
+Relacional: Salva os dados em formato de tabela
+Orientado a objetos: Salva os dados em forma de objeto 
+
+4. Qual o objetivo do mapeamento objeto-relacional (ORM)?
+	
+Quando deseja integrar dois tipos de base de dados distintas e quer uni-las em apenas uma só solução, feito através do mapeamento objeto racional 
+
+5. Defina:
+
+a) Dados estruturados;
+b) Dados semiestrurados;
+c) Dados não estruturados.
+
+a. Dados estruturados seguem um padrão, formato em tabelas.
+b. Semi-estruturado  tem um padrão hierárquico.
+c. Não estruturado, pode ser vídeo, áudio, imagem.
+
+6. Qual o nome da biblioteca responsável pela extração/captura de dados disponíveis
+em arquivos HTML ou XML? Explique.
+
+Jsoup, utilizada apenas no Java, para extrair dados em arquivo html ou xml, podemos manipular esses dados para extrair para outra pasta e outros afins
+
+7. Os arquivos do tipo XML (eXtensible Markup Language) surgiram como forma de
+estruturação e troca de dados pela internet. Dentre suas principais característica
+preencha os seguintes questionamentos:
+
+a) Sintaxe inicial na primeira linha do arquivo.xml
+b) Os dados são organizados em formato hierárquico ou tabular?
+c) Quais são as formas de representação de um documento XML.
+Justique.
+
+A) <? xml version=“1.0” ?>
+B) hierárquico 
+C) Textual e árvore 
+
+8. Elabore um documento xml sobre produtos disponíveis para venda em empresas
+do comércio eletrônico/móveis/imóveis/roupas, a partir das seguintes condições:
+▪ O produto deve possuir 5 características;
+▪ Cada produto deve ter um nome de identificação;
+▪ No documento deverá ter pelo menos dois produtos preenchidos.
+
+<? xml version=“1.0” ?>
+
+<produtos>
+<produto>
+<nome> Colar</nome>
+<preco> 10</preco>
+</produto>
+</produtos>
+
+9. Defina o que é um documento JSON e quais suas principais características.
+
+Seguir uma hierarquia, pode ser um array/objeto sendo textual
+
+10.O que significa o processo de serialização (JSON.stringify) e desserialização
+(JSON.parse) de documentos do tipo JSON?
+
+11. Faça um exemplo de documento JSON a partir de dados sobre serviços de vendas
+online.
+• Utilize dados do tipo, string, inteiro, array e objetos.
+
+{
+"Nome": "Paulo",
+"id": 12,
+}
+
+12. Quais são as principais diferenças entre documentos do tipo JSON e XML.
+
+Um e baseado em tag, outro de dicionário 
+
+13. Para que serve utilizar JDBC com Sistemas de Gerenciamento de Banco de Dados.
+
+ Para integrar uma aplicação com o banco de dados através do JDBC
+
+14. Quais são os principais componentes durante a implementação do JDBC?
+Explique.
+
+DriveManager dentro do componente conection que vai estabelecer a conexão com o banco de dados
+Statement criar, atualizar, tratar os dados
+Resut visualização dos dados
+
+15. Cites restrições sobre a utilização do JDBC para sistemas atuais.
+
+Ele tem um limite de transações que pode ser feita, instruções via String, processamento de dados mais demorado diferente do JPA
